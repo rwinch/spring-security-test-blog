@@ -42,7 +42,7 @@ import org.springframework.test.context.web.ServletTestExecutionListener;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = WithMockUserTests.Config.class)
+@ContextConfiguration
 @TestExecutionListeners(listeners={ServletTestExecutionListener.class,
         DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,

@@ -38,7 +38,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=CsrfShowcaseTests.Config.class)
+@ContextConfiguration
 @WebAppConfiguration
 public class CsrfShowcaseTests {
 
