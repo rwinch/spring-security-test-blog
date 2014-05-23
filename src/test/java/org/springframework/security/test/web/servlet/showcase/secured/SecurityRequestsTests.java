@@ -80,8 +80,8 @@ public class SecurityRequestsTests {
 
     @Test
     public void requestProtectedUrlWithAdmin() throws Exception {
-        mvc
-            .perform(get("/admin").with(user("admin").roles("ADMIN")))
+mvc
+    .perform(get("/admin").with(user("admin").password("pass").roles("USER","ADMIN")))
             // Ensure we got past Security
             .andExpect(status().isNotFound())
             // Ensure it appears we are authenticated with admin
@@ -90,13 +90,13 @@ public class SecurityRequestsTests {
 
     @Test
     public void requestProtectedUrlWithUserDetails() throws Exception {
-        UserDetails user = userDetailsService.loadUserByUsername("user");
+        UserDetails userDetails = userDetailsService.loadUserByUsername("user");
         mvc
-            .perform(get("/").with(user(user)))
+            .perform(get("/").with(user(userDetails)))
             // Ensure we got past Security
             .andExpect(status().isNotFound())
             // Ensure it appears we are authenticated with user
-            .andExpect(authenticated().withAuthenticationPrincipal(user));
+            .andExpect(authenticated().withAuthenticationPrincipal(userDetails));
     }
 
     @Test
